@@ -9,6 +9,7 @@ import com.example.qrscannerapp.R
 import com.example.qrscannerapp.ui.component.BottomBar
 import com.example.qrscannerapp.ui.component.FloatingButton
 import com.example.qrscannerapp.ui.component.TopBar
+import com.example.qrscannerapp.ui.screen.GenerateScreen
 import com.example.qrscannerapp.ui.screen.HistoryScreen
 
 @Composable
@@ -21,7 +22,7 @@ fun MainApp(){
         containerColor = colorResource(id = R.color.blue_tertiary)
     ) {
         innerPadding ->
-        HistoryScreen(innerPadding)
+        GenerateScreen(innerPadding)
     }
 }
 
