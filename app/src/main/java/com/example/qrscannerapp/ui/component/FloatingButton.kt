@@ -1,5 +1,6 @@
 package com.example.qrscannerapp.ui.component
 
+import android.content.Context
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size

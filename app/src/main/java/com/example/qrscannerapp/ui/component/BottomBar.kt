@@ -9,17 +9,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavHostController
 import com.example.qrscannerapp.R
 import com.example.qrscannerapp.ui.utils.itemNavigation
+import com.example.qrscannerapp.ui.utils.screenNavigation
+
 
 @Composable
-fun BottomBar(){
+fun BottomBar(navHostController: NavHostController,backStackEntry: NavBackStackEntry?){
     NavigationBar(
         containerColor = Color.White
     ) {
         itemNavigation.forEach {
             item ->
-            val isSelected = item.title == "History"
+            val isSelected = screenNavigation[item.title] == backStackEntry?.destination?.route
             NavigationBarItem(
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = Color.White,
@@ -30,7 +34,7 @@ fun BottomBar(){
                 ),
                 selected = isSelected,
                 label = { Text(text = item.title)},
-                onClick = { /*TODO*/ },
+                onClick = { navHostController.navigate(screenNavigation[item.title]!!) },
                 icon = {
                     Icon(
                         painter = painterResource(id = item.icon),
