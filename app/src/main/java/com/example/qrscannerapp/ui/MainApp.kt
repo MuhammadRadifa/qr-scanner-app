@@ -8,10 +8,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.qrscannerapp.R
 import com.example.qrscannerapp.ui.component.BottomBar
 import com.example.qrscannerapp.ui.component.FloatingButton
+import com.example.qrscannerapp.ui.component.TopBar
 
 @Composable
 fun MainApp(){
     Scaffold(
+        topBar = { TopBar() },
         bottomBar = { BottomBar()},
         floatingActionButton = { FloatingButton() },
         floatingActionButtonPosition = FabPosition.Center,
