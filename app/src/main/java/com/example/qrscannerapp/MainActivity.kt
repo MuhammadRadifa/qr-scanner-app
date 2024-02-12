@@ -76,7 +76,9 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //MainApp()
                     val context = LocalContext.current
-                    MainApp()
+                    MainApp(){
+                        checkCameraPermission(context)
+                    }
                 }
             }
         }

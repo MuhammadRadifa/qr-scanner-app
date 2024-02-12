@@ -13,17 +13,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.qrscannerapp.R
+import com.example.qrscannerapp.ui.utils.Screen
 
 @Composable
-fun FloatingButton(){
+fun FloatingButton(navController: NavController,checkCameraPermission:()->Unit){
     FloatingActionButton(
         modifier = Modifier
             .offset(y = 50.dp)
             .size(70.dp)
             .border(width = 4.dp, color = colorResource(id = R.color.blue_secondary), shape = CircleShape),
         shape = CircleShape,
-        onClick = {  },
+        onClick = {
+                navController.navigate(Screen.QrScreen.route)
+
+                checkCameraPermission()
+        },
         containerColor = colorResource(id = R.color.blue_primary),
         contentColor = colorResource(id = R.color.blue_tertiary)
     ) {

@@ -1,5 +1,6 @@
 package com.example.qrscannerapp.ui
 
+import android.content.Context
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -21,14 +22,13 @@ import com.example.qrscannerapp.ui.screen.HomeScreen
 import com.example.qrscannerapp.ui.utils.Screen
 
 @Composable
-fun MainApp(){
-    val context = LocalContext.current
+fun MainApp(checkCameraPermission:()->Unit){
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     Scaffold(
-        topBar = { TopBar() },
+        topBar = { TopBar(backStackEntry) },
         bottomBar = { BottomBar(navController,backStackEntry)},
-        floatingActionButton = { FloatingButton() },
+        floatingActionButton = { FloatingButton(navController,checkCameraPermission) },
         floatingActionButtonPosition = FabPosition.Center,
         containerColor = colorResource(id = R.color.blue_tertiary)
     ) {
@@ -45,10 +45,4 @@ fun MainApp(){
             }
         }
     }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun MainAppPreview(){
-    MainApp()
 }
