@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,19 +18,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import com.example.qrscannerapp.ui.MainApp
 import com.example.qrscannerapp.ui.theme.QRScannerAppTheme
+import com.example.qrscannerapp.ui.utils.MainViewModel
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 
 class MainActivity : ComponentActivity() {
-    
-    private var text = mutableStateOf("")
+
+    private val viewModel by viewModels<MainViewModel>()
 
     private val barCodeLauncher = registerForActivityResult(ScanContract()){
             result ->
         if (result.contents == null){
             Toast.makeText(this@MainActivity,"Cancelled", Toast.LENGTH_SHORT).show()
         }else{
-            text.value = result.contents
+            viewModel.changeResult(result.contents)
         }
     }
 
@@ -74,9 +76,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //MainApp()
                     val context = LocalContext.current
-                    MainApp(){
+                    MainApp(viewModel){
                         checkCameraPermission(context)
                     }
                 }

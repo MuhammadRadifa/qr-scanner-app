@@ -19,10 +19,11 @@ import com.example.qrscannerapp.ui.component.TopBar
 import com.example.qrscannerapp.ui.screen.GenerateScreen
 import com.example.qrscannerapp.ui.screen.HistoryScreen
 import com.example.qrscannerapp.ui.screen.HomeScreen
+import com.example.qrscannerapp.ui.utils.MainViewModel
 import com.example.qrscannerapp.ui.utils.Screen
 
 @Composable
-fun MainApp(checkCameraPermission:()->Unit){
+fun MainApp(viewModel: MainViewModel,checkCameraPermission:()->Unit){
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     Scaffold(
@@ -35,7 +36,7 @@ fun MainApp(checkCameraPermission:()->Unit){
         innerPadding ->
         NavHost(navController = navController, startDestination = Screen.QrScreen.route ){
             composable(route = Screen.QrScreen.route){
-                HomeScreen(innerPadding = innerPadding)
+                HomeScreen(innerPadding = innerPadding, viewModel = viewModel)
             }
             composable(route = Screen.HistoryScreen.route){
                 HistoryScreen(innerPadding = innerPadding)
