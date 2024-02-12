@@ -27,7 +27,7 @@ fun MainApp(viewModel: MainViewModel,checkCameraPermission:()->Unit){
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     Scaffold(
-        topBar = { TopBar(backStackEntry) },
+        topBar = { TopBar() },
         bottomBar = { BottomBar(navController,backStackEntry)},
         floatingActionButton = { FloatingButton(navController,checkCameraPermission) },
         floatingActionButtonPosition = FabPosition.Center,

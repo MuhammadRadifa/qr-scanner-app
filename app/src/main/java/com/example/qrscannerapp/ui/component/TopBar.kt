@@ -24,20 +24,13 @@ import com.example.qrscannerapp.ui.utils.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(navBackStackEntry: NavBackStackEntry?){
+fun TopBar(){
     CenterAlignedTopAppBar(
         modifier = Modifier
             .height(64.dp),
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = colorResource(id = R.color.blue_primary)
         ),
-        navigationIcon = {
-            if(navBackStackEntry?.destination?.route != Screen.QrScreen.route){
-                IconButton(onClick = { /*TODO*/ },Modifier.fillMaxHeight()) {
-                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.White)
-                }
-            }
-        },
         title = {
             Text(
                 text = "QR Scanner",
