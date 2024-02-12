@@ -1,6 +1,6 @@
 ## QR SCANNER APP
 
-<img src="./Thumbnail.png"/>
+<img src="./thumbnail.png"/>
 
 ### About
 
