@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
+import com.example.qrscannerapp.data.QrCode
 import com.example.qrscannerapp.ui.MainApp
 import com.example.qrscannerapp.ui.theme.QRScannerAppTheme
 import com.example.qrscannerapp.ui.utils.MainViewModel
@@ -32,6 +33,12 @@ class MainActivity : ComponentActivity() {
             Toast.makeText(this@MainActivity,"Cancelled", Toast.LENGTH_SHORT).show()
         }else{
             viewModel.changeResult(result.contents)
+            viewModel.addQr(
+                QrCode(
+                    url = result.contents,
+                    dateTime = System.currentTimeMillis()
+                )
+            )
         }
     }
 

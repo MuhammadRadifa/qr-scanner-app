@@ -39,7 +39,7 @@ fun MainApp(viewModel: MainViewModel,checkCameraPermission:()->Unit){
                 HomeScreen(innerPadding = innerPadding, viewModel = viewModel)
             }
             composable(route = Screen.HistoryScreen.route){
-                HistoryScreen(innerPadding = innerPadding)
+                HistoryScreen(innerPadding = innerPadding,viewModel = viewModel)
             }
             composable(route = Screen.GenerateScreen.route){
                 GenerateScreen(innerPadding = innerPadding)
